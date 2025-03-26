@@ -20,8 +20,9 @@ class SendDailySummaryEmail implements ShouldQueue
     {
         $users = User::all();
         foreach ($users as $user) {
-            Mail::to($user->email)->send(new DailySummaryMail());
+            Mail::to($user->email)->send(new DailySummaryMail($user));
         }
     }
 }
+
 
